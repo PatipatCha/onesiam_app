@@ -38,6 +38,8 @@ class _ProductHomePageState extends State<ProductHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('For You'),
+        elevation: 0,
+        automaticallyImplyLeading: false
         
       ),
       body: BlocBuilder<ProductItemBloc, ProductItemState>(
