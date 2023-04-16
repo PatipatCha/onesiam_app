@@ -1,10 +1,10 @@
 // ignore_for_file: prefer_const_constructors, sort_child_properties_last, prefer_const_literals_to_create_immutables, sized_box_for_whitespace
 import 'package:flutter/material.dart';
-import 'package:onesiam_app/models/product_model.dart';
-import 'package:onesiam_app/themes/themes.dart';
+import 'package:onesiam_app/core/themes/themes.dart';
+import 'package:onesiam_app/features/product/domain/entities/entities.dart';
 
 class ListViewProduct extends StatefulWidget {
-  final List<ProductItem> products;
+  final List<ProductItemEntity> products;
   const ListViewProduct({super.key, required this.products});
 
   @override
@@ -15,16 +15,16 @@ class _ListViewProductState extends State<ListViewProduct> {
   @override
   Widget build(BuildContext context) {
   
-  setButtonSaved(ProductItem product){
+  setButtonSaved(ProductItemEntity product){
     print(product.saved);
     if(product.saved != null){
       if(product.saved!){
         setState(() {
-          product.saved = !product.saved!;
+          // product.saved = !product.saved!;
         });
       }else{
         setState(() {
-          product.saved = !product.saved!;
+          // product.saved = !product.saved!;
         });
       }
     }
@@ -49,7 +49,7 @@ class _ListViewProductState extends State<ListViewProduct> {
                   child: Stack(
                     children: [
                       Image.network(
-                        widget.products[index].imageUrl,
+                        widget.products[index].imageUrl??'',
                         // width: 100,
                         height: 130,
                         fit: BoxFit.fill
@@ -70,7 +70,7 @@ class _ListViewProductState extends State<ListViewProduct> {
                 SizedBox(height: 5),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: Text(widget.products[index].name, style: TextStyle(fontSize: 18), maxLines: 2, overflow: TextOverflow.ellipsis,),
+                  child: Text(widget.products[index].name??'', style: TextStyle(fontSize: 18), maxLines: 2, overflow: TextOverflow.ellipsis,),
                 ),
                 SizedBox(height: 10),
                 Padding(

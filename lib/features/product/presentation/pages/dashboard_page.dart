@@ -1,24 +1,33 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onesiam_app/features/product/product.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:onesiam_app/themes/colors.dart';
+
+import 'package:onesiam_app/injection.dart' as di;
 
 class DashboardPage extends StatefulWidget {
-  const DashboardPage({super.key});
+  
+  final ProductItemBloc productItemBloc;
+  const DashboardPage({super.key, required this.productItemBloc});
 
   @override
   State<DashboardPage> createState() => _DashboardPageState();
 }
 
 class _DashboardPageState extends State<DashboardPage> {
-
+  
   String _title = 'product';
   int _currentIndex = 0;
 
   final List<Widget> _children = [
-    ProductHomePage(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider.value(value: di.locator<ProductItemBloc>())
+      ],
+      child: ProductHomePage(),
+    ),
     SavedPage(),
     CartPage()
   ];

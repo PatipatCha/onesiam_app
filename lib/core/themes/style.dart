@@ -1,7 +1,7 @@
 //app bar, font,
 
 import 'package:flutter/material.dart';
-import 'package:onesiam_app/themes/colors.dart';
+import 'package:onesiam_app/core/themes/colors.dart';
 
 //ตั้งชื่อ obj เอาไปใส่ที่ file main อีกทีนุง
 ThemeData appTheme() {

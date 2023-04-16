@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:onesiam_app/routers.dart';
-import 'package:onesiam_app/themes/style.dart';
-
+import 'package:onesiam_app/core/themes/style.dart';
+import 'package:onesiam_app/injection.dart';
 var userStep;
 
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized(); //การบอกให้ main ทำงานได้แบบ async
+  WidgetsFlutterBinding.ensureInitialized(); 
+  init();
   runApp(MyApp());
 }
 
-// extract ออกมา เพื่อเอาไว้ทำ hotreload
 class MyApp extends StatelessWidget {
   const MyApp({
     Key? key,
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
       initialRoute: '/dashboard',
-      routes: routes,
+      onGenerateRoute: RouterGenerator.generateRoute,
     );
   }
 }
