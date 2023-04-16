@@ -15,3 +15,11 @@ class onGetProductItemEvent extends ProductItemEvent {
   @override
   List<Object> get props => [];
 }
+
+class onSavedProductEvent extends ProductItemEvent {
+  final ProductItemEntity product;
+  const onSavedProductEvent(this.product);
+  
+  @override
+  List<Object> get props => [];
+}

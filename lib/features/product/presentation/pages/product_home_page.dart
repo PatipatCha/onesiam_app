@@ -54,6 +54,68 @@ class _ProductHomePageState extends State<ProductHomePage> {
                       children: [
                         SizedBox(height: 16.0),
                         ListViewProduct(products: productItemList)
+
+        //                 Expanded(
+        //   child: GridView.builder(
+        //       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        //           crossAxisCount: 2, mainAxisExtent: 280),
+        //       itemCount: productItemList.length,
+        //       itemBuilder: (_, index) {
+        //         return Container(
+        //           margin: EdgeInsets.all(10),
+        //           decoration:
+        //               BoxDecoration(border: Border.all(color: Colors.black38)),
+        //           child: Column(
+        //             crossAxisAlignment: CrossAxisAlignment.start,
+        //             // mainAxisAlignment: MainAxisAlignment.center,
+        //             children: [
+        //               Padding(
+        //                 padding: const EdgeInsets.all(8.0),
+        //                 child: Stack(children: [
+        //                   Image.network(productItemList[index].imageUrl ?? '',
+        //                       // width: 100,
+        //                       height: 130,
+        //                       fit: BoxFit.fill),
+        //                   Positioned(
+        //                     top: 5,
+        //                     right: 5,
+        //                     child: InkWell(
+        //                       child: productItemList[index].saved!
+        //                           ? Icon(Icons.favorite, color: Colors.red)
+        //                           : Icon(Icons.favorite),
+        //                       onTap: () {
+        //                         context.read<ProductBloc>().add(
+        //                             onSavedProductEvent(widget.products[index])
+        //                                 as ProductEvent);
+        //                         // .read<DeliveryAddressMemberBloc>()
+        //                         // .add(AddressListEventSelect(item));
+        //                         setButtonSaved(widget.products[index]);
+        //                       },
+        //                     ),
+        //                   ),
+        //                 ]),
+        //               ),
+        //               Divider(),
+        //               SizedBox(height: 5),
+        //               Padding(
+        //                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        //                 child: Text(
+        //                   widget.products[index].name ?? '',
+        //                   style: TextStyle(fontSize: 18),
+        //                   maxLines: 2,
+        //                   overflow: TextOverflow.ellipsis,
+        //                 ),
+        //               ),
+        //               SizedBox(height: 10),
+        //               Padding(
+        //                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        //                 child: Text('฿${widget.products[index].price}'),
+        //               )
+        //             ],
+        //           ),
+        //         );
+        //       }),
+        // )
                       ],
                     );
           }else {

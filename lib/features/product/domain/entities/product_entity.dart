@@ -5,9 +5,9 @@ class ProductItemEntity extends Equatable{
   final String? name;
   final String? imageUrl;
   final double? price;
-  final bool? saved;
+  late bool? saved;
 
-  const ProductItemEntity({
+  ProductItemEntity({
     required this.id,
     this.name,
     this.imageUrl,

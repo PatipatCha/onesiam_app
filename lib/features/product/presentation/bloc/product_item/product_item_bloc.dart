@@ -7,26 +7,55 @@ part 'product_item_event.dart';
 part 'product_item_state.dart';
 
 class ProductItemBloc extends Bloc<ProductItemEvent, ProductItemState> {
+
+ late List<ProductItemEntity> _productList = [];
+  List<ProductItemEntity> get productList => _productList;
+
+
+  ProductItemEntity? _product;
+  ProductItemEntity? get product => _product;
+
   
   ProductItemBloc() : super(ProductItemInitial()) { 
-    final GetProductItem _getProductItem = di.locator<GetProductItem>();;
+    final GetProductItem _getProductItem = di.locator<GetProductItem>();
+    
+    on<onSavedProductEvent>((event, emit) async {
+      // List<ProductItemEntity> product_List = productList;
+      ProductItemEntity product = event.product;
+      _product = product;
+    });
+
     on<ProductItemEvent>((event, emit) async {
       emit(ProductItemLoading());
-
-      final productItem = await _getProductItem.execute();
+      if(productList.length == 0){
+        final productItem = await _getProductItem.execute();
       if (productItem.isLeft()) {
         emit(const ProductItemError("Something is wrong"));
       } else {
 
-      print(productItem);
-        List<ProductItemEntity> productItemResult = productItem.getOrElse(() => throw UnimplementedError(),);
-      //   productItemResult.forEach((element) {
-      //   //set default
-      //   element.saved = false;
-      // });
-      // print(productItemList[0].saved);
+      print(product);
+      List<ProductItemEntity> productItemResult = productItem.getOrElse(() => throw UnimplementedError(),);
+      _productList = productItemResult;
+      // ProductItemEntity? productSaved = product;
         emit(ProductItemHasData(productItemResult));
       }
+      }else {
+        if(product != null){
+        int i =0;
+        productList.forEach((item){ 
+          if(item.id == product!.id){   
+            productList[i].saved = product!.saved!;
+          }
+          i++;
+        }); 
+        print(productList);
+        emit(ProductItemHasData(productList));
+      }
+      }
+      
     });
+
+    
+
   }
 }
