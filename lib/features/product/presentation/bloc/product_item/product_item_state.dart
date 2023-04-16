@@ -27,10 +27,3 @@ class ProductItemHasData extends ProductItemState {
   List<Object> get props => [ProductItemHasDataResult];
 }
 
-// class SavedProductState extends ProductItemState {
-//   final List<ProductItemEntity> ProductItemHasDataResult;
-//   const ProductItemHasData(this.ProductItemHasDataResult);
-//   @override
-//   List<Object> get props => [ProductItemHasDataResult];
-// }
-

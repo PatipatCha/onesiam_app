@@ -39,53 +39,57 @@ class _ListViewProductState extends State<ListViewProduct> {
               itemCount: widget.products.length,
               itemBuilder: (_, index) {
                 print(widget.products[index].saved!);
-                return Container(
-                  margin: EdgeInsets.all(10),
-                  decoration:
-                      BoxDecoration(border: Border.all(color: Colors.black38)),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    // mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Stack(children: [
-                          Image.network(widget.products[index].imageUrl ?? '',
-                              // width: 100,
-                              height: 130,
-                              fit: BoxFit.fill),
-                          Positioned(
-                            top: 5,
-                            right: 5,
-                            child: InkWell(
-                              child: widget.products[index].saved!
-                                  ? Icon(Icons.favorite, color: Colors.red)
-                                  : Icon(Icons.favorite),
-                              onTap: () {
-                                context.read<ProductItemBloc>().add(onSavedProductEvent(widget.products[index]));
-                                setButtonSaved(widget.products[index]);
-                              },
+                return InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(context, '/productdetial', arguments: {'product': widget.products[index] });
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(10),
+                    decoration:
+                        BoxDecoration(border: Border.all(color: Colors.black38)),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Stack(children: [
+                            Image.network(widget.products[index].imageUrl ?? '',
+                                // width: 100,
+                                height: 130,
+                                fit: BoxFit.fill),
+                            Positioned(
+                              top: 5,
+                              right: 5,
+                              child: InkWell(
+                                child: widget.products[index].saved!
+                                    ? Icon(Icons.favorite, color: Colors.red)
+                                    : Icon(Icons.favorite),
+                                onTap: () {
+                                  context.read<ProductItemBloc>().add(onSavedProductEvent(widget.products[index]));
+                                  setButtonSaved(widget.products[index]);
+                                },
+                              ),
                             ),
-                          ),
-                        ]),
-                      ),
-                      Divider(),
-                      SizedBox(height: 5),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text(
-                          widget.products[index].name ?? '',
-                          style: TextStyle(fontSize: 18),
-                          maxLines: 2,
-                          overflow: TextOverflow.ellipsis,
+                          ]),
                         ),
-                      ),
-                      SizedBox(height: 10),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Text('฿${widget.products[index].price}'),
-                      )
-                    ],
+                        Divider(),
+                        SizedBox(height: 5),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text(
+                            widget.products[index].name ?? '',
+                            style: TextStyle(fontSize: 18),
+                            maxLines: 2,
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ),
+                        SizedBox(height: 10),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                          child: Text('฿${widget.products[index].price}'),
+                        )
+                      ],
+                    ),
                   ),
                 );
               }),

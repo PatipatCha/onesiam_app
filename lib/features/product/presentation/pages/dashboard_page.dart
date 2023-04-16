@@ -32,7 +32,6 @@ class _DashboardPageState extends State<DashboardPage> {
     CartPage()
   ];
 
-  // สร้าง function สำหรับการเปลี่ยน tap (switch case, if else)
   void onTabChange(int index) {
     setState(() {
       _currentIndex = index;
@@ -57,10 +56,9 @@ class _DashboardPageState extends State<DashboardPage> {
         body:
             _children[_currentIndex],
 
-        //bottom Navigation Bar
         bottomNavigationBar: BottomNavigationBar(
           onTap:
-              onTabChange, //รับ param เดียว return param เดียว ไม่ต้องใส่ () ที่ function
+              onTabChange, 
           currentIndex: _currentIndex,
           type: BottomNavigationBarType.fixed,
           items: const [

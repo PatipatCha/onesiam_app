@@ -1,3 +1,4 @@
+import 'package:dartz/dartz.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:onesiam_app/app_bloc_observer.dart';
@@ -10,7 +11,9 @@ class RouterGenerator {
     switch (settings.name) {
       case '/dashboard':
         return MaterialPageRoute(builder: (_) => DashboardPage(productItemBloc: di.locator.get()));
-      
+      case '/productdetial':
+        final args = settings.arguments as Map?;
+        return MaterialPageRoute(builder: (_) => ProductDetailPage(product: args!['product']));
       default:
         return MaterialPageRoute(builder: (_) => const Scaffold(body: Center(child: Text("No route"))));
     }
