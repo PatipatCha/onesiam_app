@@ -60,7 +60,7 @@ class _DashboardPageState extends State<DashboardPage> {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.heart_broken),
+              icon: Icon(Icons.favorite),
               label: 'Saved',
             ),
             BottomNavigationBarItem(

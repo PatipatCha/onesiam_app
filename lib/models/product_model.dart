@@ -30,18 +30,21 @@ class ProductItem {
         required this.name,
         required this.imageUrl,
         required this.price,
+        this.saved
     });
 
     int id;
     String name;
     String imageUrl;
     double price;
+    bool? saved;
 
     factory ProductItem.fromJson(Map<String, dynamic> json) => ProductItem(
         id: json["id"],
         name: json["name"],
         imageUrl: json["image_url"],
         price: json["price"],
+        saved: json["saved"],
     );
 
     Map<String, dynamic> toJson() => {
@@ -49,5 +52,6 @@ class ProductItem {
         "name": name,
         "image_url": imageUrl,
         "price": price,
+        "saved": saved,
     };
 }

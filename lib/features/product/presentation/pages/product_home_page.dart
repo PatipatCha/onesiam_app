@@ -1,10 +1,29 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:onesiam_app/features/product/presentation/widgets/widgets.dart';
 import 'package:onesiam_app/models/product_model.dart';
 
-class ProductHomePage extends StatelessWidget {
+class ProductHomePage extends StatefulWidget {
   const ProductHomePage({super.key});
-  
+
+  @override
+  State<ProductHomePage> createState() => _ProductHomePageState();
+}
+
+class _ProductHomePageState extends State<ProductHomePage> {
+  @override
+  void initState(){
+    setSavedProductItemList();
+  }
+
+  setSavedProductItemList(){
+    productItemList.forEach((element) {
+      //set default
+      element.saved = false;
+    });
+    print(productItemList[0].saved);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +34,8 @@ class ProductHomePage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          ListViewProduct(productItemList)
+          SizedBox(height: 16.0),
+          ListViewProduct(products: productItemList)
         ],
       ),
     );
